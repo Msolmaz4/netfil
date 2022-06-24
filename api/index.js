@@ -9,10 +9,14 @@ dotenv.config()
 
 mongoose.connect(process.env.MONGO_URL,{
     useNewUrlParser:true,
-    useUnifiedTopology:true
+    useUnifiedTopology:true,
+    
 })
 .then(()=>console.log('mongose sucess'))
 .catch((err)=>console.log(err))
+
+
+app.use(express.json())
 
 app.use('/api/auth',authRoute)
 app.listen(8800, ()=>{
