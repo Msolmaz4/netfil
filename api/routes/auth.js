@@ -7,7 +7,7 @@ router.post('/register', async (req,res) =>{
     const newUser = new User ({
         username:req.body.username,
         email:req.body.email,
-        password: CryptoJS.AES.encrypt(req.body.password, process.env.SECRET_KEY).toString();
+        password: CryptoJS.AES.encrypt(req.body.password, process.env.SECRET_KEY).toString()
     })
 
     try{
@@ -18,8 +18,8 @@ router.post('/register', async (req,res) =>{
         res.status(500).json(err)
 
     }
+})
 
-    //login
     router.post('/login', async (req,res) =>{
         try{
             const user =  await User.findOne({email:req.body.email})
@@ -38,10 +38,5 @@ router.post('/register', async (req,res) =>{
 
         }
 
-    }
-
-
-   
-
-})
+    })
 module.exports  = router;
